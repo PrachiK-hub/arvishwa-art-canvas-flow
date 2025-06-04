@@ -1,8 +1,12 @@
 
 import React, { useEffect } from 'react';
 import HeroSection from '@/components/HeroSection';
+import AboutSection from '@/components/AboutSection';
 import GallerySection from '@/components/GallerySection';
+import MoodGallerySection from '@/components/MoodGallerySection';
+import VirtualGallerySection from '@/components/VirtualGallerySection';
 import CustomOrderSection from '@/components/CustomOrderSection';
+import ExhibitionsSection from '@/components/ExhibitionsSection';
 import ArtistSection from '@/components/ArtistSection';
 
 const Index = () => {
@@ -12,28 +16,58 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation Bar */}
-      <nav className="fixed top-0 w-full z-50 glass-effect">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex justify-between items-center">
-            <div className="text-2xl font-serif font-semibold text-gradient">
-              Arvishwa Studio
-            </div>
-            <div className="hidden md:flex space-x-8 text-gray-700 font-medium">
-              <a href="#home" className="hover:text-blue-600 transition-colors duration-300">Home</a>
-              <a href="#gallery" className="hover:text-blue-600 transition-colors duration-300">Gallery</a>
-              <a href="#custom" className="hover:text-blue-600 transition-colors duration-300">Custom Orders</a>
-              <a href="#artist" className="hover:text-blue-600 transition-colors duration-300">Artist</a>
-              <a href="#contact" className="hover:text-blue-600 transition-colors duration-300">Contact</a>
-            </div>
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button className="text-gray-700 hover:text-blue-600 transition-colors duration-300">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            </div>
+      {/* Floating Navigation Bar */}
+      <nav className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 md:top-6 md:left-auto md:right-6 md:transform-none">
+        <div className="bg-white/90 backdrop-blur-lg rounded-full shadow-2xl border border-white/20">
+          <div className="flex md:flex-col space-x-2 md:space-x-0 md:space-y-2 p-2">
+            <a href="#home" className="p-3 rounded-full hover:bg-blue-100 transition-colors duration-300 group">
+              <span className="text-xl">🏠</span>
+              <div className="hidden md:block absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-slate-800 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Home
+              </div>
+            </a>
+            <a href="#about" className="p-3 rounded-full hover:bg-blue-100 transition-colors duration-300 group">
+              <span className="text-xl">👨‍🎨</span>
+              <div className="hidden md:block absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-slate-800 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                About
+              </div>
+            </a>
+            <a href="#gallery" className="p-3 rounded-full hover:bg-blue-100 transition-colors duration-300 group">
+              <span className="text-xl">🖼️</span>
+              <div className="hidden md:block absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-slate-800 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Gallery
+              </div>
+            </a>
+            <a href="#mood" className="p-3 rounded-full hover:bg-blue-100 transition-colors duration-300 group">
+              <span className="text-xl">🎨</span>
+              <div className="hidden md:block absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-slate-800 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Mood Art
+              </div>
+            </a>
+            <a href="#virtual" className="p-3 rounded-full hover:bg-blue-100 transition-colors duration-300 group">
+              <span className="text-xl">🕶️</span>
+              <div className="hidden md:block absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-slate-800 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Virtual Tour
+              </div>
+            </a>
+            <a href="#custom" className="p-3 rounded-full hover:bg-blue-100 transition-colors duration-300 group">
+              <span className="text-xl">🎯</span>
+              <div className="hidden md:block absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-slate-800 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Custom Orders
+              </div>
+            </a>
+            <a href="#exhibitions" className="p-3 rounded-full hover:bg-blue-100 transition-colors duration-300 group">
+              <span className="text-xl">📅</span>
+              <div className="hidden md:block absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-slate-800 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Exhibitions
+              </div>
+            </a>
+            <a href="#contact" className="p-3 rounded-full hover:bg-blue-100 transition-colors duration-300 group">
+              <span className="text-xl">💬</span>
+              <div className="hidden md:block absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-slate-800 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                Contact
+              </div>
+            </a>
           </div>
         </div>
       </nav>
@@ -45,14 +79,34 @@ const Index = () => {
           <HeroSection />
         </section>
 
+        {/* About Section */}
+        <section id="about">
+          <AboutSection />
+        </section>
+
         {/* Gallery Section */}
         <section id="gallery">
           <GallerySection />
         </section>
 
+        {/* Mood Gallery Section */}
+        <section id="mood">
+          <MoodGallerySection />
+        </section>
+
+        {/* Virtual Gallery Section */}
+        <section id="virtual">
+          <VirtualGallerySection />
+        </section>
+
         {/* Custom Order Section */}
         <section id="custom">
           <CustomOrderSection />
+        </section>
+
+        {/* Exhibitions Section */}
+        <section id="exhibitions">
+          <ExhibitionsSection />
         </section>
 
         {/* Artist Section */}
@@ -61,44 +115,69 @@ const Index = () => {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-20 bg-gray-50">
+        <section id="contact" className="py-20 bg-slate-50">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl md:text-6xl font-serif font-semibold text-gray-900 mb-6">
-              Let's Create <span className="text-gradient">Together</span>
+            <h2 className="text-4xl md:text-6xl font-serif font-bold text-slate-800 mb-6">
+              Let's Create <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Together</span>
             </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
               Ready to bring your artistic vision to life? Get in touch and let's start your custom art journey.
             </p>
             
             <div className="grid md:grid-cols-3 gap-8 mb-12">
-              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <div className="text-4xl mb-4">📧</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Email</h3>
-                <p className="text-gray-600">hello@arvishwastudio.com</p>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Email</h3>
+                <p className="text-slate-600">hello@arvishwastudio.com</p>
+                <button className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">
+                  Send Email
+                </button>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <div className="text-4xl mb-4">📱</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Phone</h3>
-                <p className="text-gray-600">+1 (555) 123-4567</p>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">WhatsApp</h3>
+                <p className="text-slate-600">+1 (555) 123-4567</p>
+                <button className="mt-4 px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors">
+                  Chat Now
+                </button>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+              <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <div className="text-4xl mb-4">📍</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">Studio</h3>
-                <p className="text-gray-600">Downtown Art District</p>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Studio Visit</h3>
+                <p className="text-slate-600">Downtown Art District</p>
+                <button className="mt-4 px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors">
+                  Book Visit
+                </button>
+              </div>
+            </div>
+
+            {/* Newsletter Signup */}
+            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white mb-8">
+              <h3 className="text-2xl font-bold mb-4">🎨 Join Our Art Community</h3>
+              <p className="text-blue-100 mb-6">Get free digital wallpapers, art tips, and first access to new collections</p>
+              <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <input 
+                  type="email" 
+                  placeholder="Enter your email"
+                  className="flex-1 px-4 py-3 rounded-full text-slate-800"
+                />
+                <button className="px-8 py-3 bg-white text-blue-600 rounded-full font-semibold hover:bg-blue-50 transition-colors">
+                  Subscribe
+                </button>
               </div>
             </div>
 
             <div className="flex justify-center space-x-6 mb-8">
-              <a href="#" className="text-3xl text-gray-600 hover:text-blue-600 transition-colors duration-300">
+              <a href="#" className="text-3xl text-slate-600 hover:text-blue-600 transition-colors duration-300">
                 📸
               </a>
-              <a href="#" className="text-3xl text-gray-600 hover:text-blue-600 transition-colors duration-300">
+              <a href="#" className="text-3xl text-slate-600 hover:text-blue-600 transition-colors duration-300">
                 📘
               </a>
-              <a href="#" className="text-3xl text-gray-600 hover:text-blue-600 transition-colors duration-300">
+              <a href="#" className="text-3xl text-slate-600 hover:text-blue-600 transition-colors duration-300">
                 🎵
               </a>
-              <a href="#" className="text-3xl text-gray-600 hover:text-blue-600 transition-colors duration-300">
+              <a href="#" className="text-3xl text-slate-600 hover:text-blue-600 transition-colors duration-300">
                 📌
               </a>
             </div>
@@ -107,20 +186,20 @@ const Index = () => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-slate-800 text-white py-12">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <div className="text-3xl font-serif font-semibold text-gradient mb-4">
+            <div className="text-3xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 mb-4">
               Arvishwa Studio
             </div>
-            <p className="text-gray-300 mb-6">Creating art that transforms spaces and touches souls</p>
+            <p className="text-slate-300 mb-6">Creating art that transforms spaces and touches souls</p>
             <div className="flex justify-center space-x-6 mb-8">
-              <span className="text-gray-400">Mon-Fri: 9AM-6PM</span>
-              <span className="text-gray-400">•</span>
-              <span className="text-gray-400">Weekends: By Appointment</span>
+              <span className="text-slate-400">Mon-Fri: 9AM-6PM</span>
+              <span className="text-slate-400">•</span>
+              <span className="text-slate-400">Weekends: By Appointment</span>
             </div>
-            <div className="border-t border-gray-800 pt-6">
-              <p className="text-gray-500 text-sm">
+            <div className="border-t border-slate-700 pt-6">
+              <p className="text-slate-500 text-sm">
                 © 2024 Arvishwa Studio. All rights reserved. | Made with ❤️ and lots of paint
               </p>
             </div>
