@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -35,8 +34,35 @@ const CustomOrderSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Custom order submitted:', formData);
-    // Handle form submission here
+    
+    // Create email content
+    const subject = encodeURIComponent('Custom Art Order Request - Arvishwa Studio');
+    const body = encodeURIComponent(`
+Hello Arvishwa Studio,
+
+I would like to request a custom art order with the following details:
+
+Name: ${formData.name}
+Email: ${formData.email}
+
+Art Description:
+${formData.description}
+
+Specifications:
+- Size: ${formData.size}
+- Medium: ${formData.medium}
+- Theme/Style: ${formData.theme}
+- Preferred Deadline: ${formData.deadline}
+- Budget Range: ${formData.budget}
+
+Please get back to me with a quote and timeline.
+
+Best regards,
+${formData.name}
+    `);
+
+    // Open default email client
+    window.location.href = `mailto:hello@arvishwastudio.com?subject=${subject}&body=${body}`;
   };
 
   const sampleWorks = [
@@ -264,7 +290,7 @@ const CustomOrderSection = () => {
                       type="submit"
                       className="px-8 py-2 bg-gradient-to-r from-purple-600 to-saffron-500 hover:from-purple-700 hover:to-saffron-600 text-white font-semibold"
                     >
-                      Submit Request ✨
+                      Send Order Request ✨
                     </Button>
                   )}
                 </div>

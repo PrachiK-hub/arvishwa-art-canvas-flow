@@ -8,14 +8,30 @@ import VirtualGallerySection from '@/components/VirtualGallerySection';
 import CustomOrderSection from '@/components/CustomOrderSection';
 import ExhibitionsSection from '@/components/ExhibitionsSection';
 import ArtistSection from '@/components/ArtistSection';
+import ThemeSwitcher from '@/components/ThemeSwitcher';
 
 const Index = () => {
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'smooth';
   }, []);
 
+  const handleEmailClick = () => {
+    window.location.href = 'mailto:hello@arvishwastudio.com';
+  };
+
+  const handleWhatsAppClick = () => {
+    window.open('https://wa.me/15551234567', '_blank');
+  };
+
+  const handleMapClick = () => {
+    window.open('https://maps.google.com?q=Downtown+Art+District', '_blank');
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Theme Switcher */}
+      <ThemeSwitcher />
+
       {/* Floating Navigation Bar */}
       <nav className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 md:top-6 md:left-auto md:right-6 md:transform-none">
         <div className="bg-white/90 backdrop-blur-lg rounded-full shadow-2xl border border-white/20">
@@ -129,7 +145,10 @@ const Index = () => {
                 <div className="text-4xl mb-4">📧</div>
                 <h3 className="text-xl font-bold text-slate-800 mb-2">Email</h3>
                 <p className="text-slate-600">hello@arvishwastudio.com</p>
-                <button className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">
+                <button 
+                  onClick={handleEmailClick}
+                  className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+                >
                   Send Email
                 </button>
               </div>
@@ -137,7 +156,10 @@ const Index = () => {
                 <div className="text-4xl mb-4">📱</div>
                 <h3 className="text-xl font-bold text-slate-800 mb-2">WhatsApp</h3>
                 <p className="text-slate-600">+1 (555) 123-4567</p>
-                <button className="mt-4 px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors">
+                <button 
+                  onClick={handleWhatsAppClick}
+                  className="mt-4 px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors"
+                >
                   Chat Now
                 </button>
               </div>
@@ -145,7 +167,10 @@ const Index = () => {
                 <div className="text-4xl mb-4">📍</div>
                 <h3 className="text-xl font-bold text-slate-800 mb-2">Studio Visit</h3>
                 <p className="text-slate-600">Downtown Art District</p>
-                <button className="mt-4 px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors">
+                <button 
+                  onClick={handleMapClick}
+                  className="mt-4 px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors"
+                >
                   Book Visit
                 </button>
               </div>

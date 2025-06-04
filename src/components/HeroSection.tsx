@@ -23,12 +23,26 @@ const HeroSection = () => {
         <div className="text-center max-w-5xl">
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold mb-8 text-slate-800">
-              <span className="block animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                Art That
+              <span className="block animate-fade-in-up magical-text" style={{ animationDelay: '0.2s' }}>
+                <span className="text-red-500">A</span>
+                <span className="text-orange-500">r</span>
+                <span className="text-yellow-500">t</span>
+                <span className="text-slate-800"> </span>
+                <span className="text-green-500">T</span>
+                <span className="text-blue-500">h</span>
+                <span className="text-indigo-500">a</span>
+                <span className="text-purple-500">t</span>
               </span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 animate-fade-in-up text-6xl md:text-8xl lg:text-9xl" 
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 animate-fade-in-up text-6xl md:text-8xl lg:text-9xl magical-glow" 
                     style={{ animationDelay: '0.4s' }}>
-                Breathes
+                <span className="text-pink-500">B</span>
+                <span className="text-rose-500">r</span>
+                <span className="text-red-500">e</span>
+                <span className="text-orange-500">a</span>
+                <span className="text-yellow-500">t</span>
+                <span className="text-lime-500">h</span>
+                <span className="text-green-500">e</span>
+                <span className="text-cyan-500">s</span>
               </span>
             </h1>
           </div>
@@ -36,7 +50,7 @@ const HeroSection = () => {
           <p className={`text-xl md:text-3xl text-slate-600 mb-12 leading-relaxed font-light transition-all duration-1000 delay-600 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            Colors That Speak. Stories That Touch Souls.
+            <span className="text-blue-600">Colors</span> <span className="text-purple-600">That</span> <span className="text-pink-600">Speak.</span> <span className="text-green-600">Stories</span> <span className="text-orange-600">That</span> <span className="text-red-600">Touch</span> <span className="text-indigo-600">Souls.</span>
           </p>
 
           <div className={`flex flex-col sm:flex-row gap-6 justify-center items-center transition-all duration-1000 delay-800 ${
