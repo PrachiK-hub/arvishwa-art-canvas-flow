@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,92 +8,24 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
-
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 221.2 83.2% 53.3%;
+    --primary: 20 100% 50%;
     --primary-foreground: 210 40% 98%;
-
     --secondary: 210 40% 96%;
     --secondary-foreground: 222.2 84% 4.9%;
-
     --muted: 210 40% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
     --accent: 210 40% 96%;
     --accent-foreground: 222.2 84% 4.9%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-
+    --ring: 20 100% 50%;
     --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  [data-theme="dark"] {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
-  }
-
-  [data-theme="green"] {
-    --background: 140 50% 95%;
-    --foreground: 140 84% 4.9%;
-    --primary: 142 76% 36%;
-    --primary-foreground: 355 100% 97%;
-  }
-
-  [data-theme="red"] {
-    --background: 0 50% 95%;
-    --foreground: 0 84% 4.9%;
-    --primary: 0 84% 60%;
-    --primary-foreground: 210 40% 98%;
-  }
-
-  [data-theme="blue"] {
-    --background: 221 50% 95%;
-    --foreground: 221 84% 4.9%;
-    --primary: 221 83% 53%;
-    --primary-foreground: 210 40% 98%;
-  }
-
-  [data-theme="purple"] {
-    --background: 270 50% 95%;
-    --foreground: 270 84% 4.9%;
-    --primary: 270 95% 60%;
-    --primary-foreground: 210 40% 98%;
   }
 }
 
@@ -112,49 +44,6 @@
   }
 }
 
-@layer components {
-  .text-gradient {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .glass-effect {
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .magical-text {
-    animation: rainbow-glow 3s ease-in-out infinite alternate;
-  }
-
-  .magical-glow {
-    animation: magical-sparkle 2s ease-in-out infinite;
-    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-  }
-
-  @keyframes rainbow-glow {
-    0% { filter: hue-rotate(0deg) brightness(1); }
-    50% { filter: hue-rotate(180deg) brightness(1.2); }
-    100% { filter: hue-rotate(360deg) brightness(1); }
-  }
-
-  @keyframes magical-sparkle {
-    0%, 100% { 
-      text-shadow: 0 0 5px rgba(59, 130, 246, 0.3),
-                   0 0 10px rgba(147, 51, 234, 0.3),
-                   0 0 15px rgba(236, 72, 153, 0.3);
-    }
-    50% { 
-      text-shadow: 0 0 10px rgba(59, 130, 246, 0.6),
-                   0 0 20px rgba(147, 51, 234, 0.6),
-                   0 0 30px rgba(236, 72, 153, 0.6);
-    }
-  }
-}
-
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
@@ -165,10 +54,18 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3b82f6;
+  background: #f97316;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #1d4ed8;
+  background: #ea580c;
+}
+
+/* Mobile-first responsive utilities */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
