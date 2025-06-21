@@ -1,73 +1,145 @@
-# Welcome to your Lovable project
+AR Vishwa Art Studio – Interactive Artist Portfolio Website
 
-## Project info
+An immersive, responsive, and artistic portfolio website built using React, TypeScript, and Tailwind CSS, featuring advanced animations, scroll-triggered effects, 3D hover interactions, and modern design aesthetics inspired by fine art studios.
 
-**URL**: https://lovable.dev/projects/fa87d645-7dbe-4916-8cb1-cbd6b4dd0c9f
+🎯 Objective
 
-## How can I edit this code?
+To present a visual artist’s work in a bold, creative, and professional manner – combining modern frontend development with clean, elegant UI/UX principles and artistic emotion.
 
-There are several ways of editing your application.
+⚙️ Tech Stack
 
-**Use Lovable**
+Framework: React
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/fa87d645-7dbe-4916-8cb1-cbd6b4dd0c9f) and start prompting.
+Language: TypeScript
 
-Changes made via Lovable will be committed automatically to this repo.
+Styling: Tailwind CSS
 
-**Use your preferred IDE**
+Animations: Framer Motion / GSAP
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Routing: React Router DOM
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Lightbox: React-Image-Lightbox or custom modal
 
-Follow these steps:
+Form Integration: EmailJS or WhatsApp API
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Performance: Lazy loading, SEO tags, image optimization
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+📁 Folder Structure
 
-# Step 3: Install the necessary dependencies.
-npm i
+src/├── assets/ # Images, textures, logos├── components/ # Navbar, Footer, Cards, Modal, etc.├── pages/ # Homepage, About, Gallery, Contact, etc.├── data/ # Art metadata, exhibitions, quotes├── styles/ # Global styles or Tailwind extensions├── utils/ # Utility functions (theme switch, form handling)├── App.tsx├── main.tsx└── index.html
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+
+
+
+
+---
+
+
+
+## 🎨 Visual Theme & UI Identity
+
+
+
+### Modes
+
+- **Light Mode**: White backgrounds, earthy gradient overlays (burnt sienna, ochre, muted teal)
+
+- **Dark Mode**: Charcoal and deep slate backgrounds with glowing blue-violet accents
+
+
+
+### Typography
+
+- **Body Font**: Inter / Montserrat
+
+- **Headings**: Playfair Display / Lora
+
+- **Accent Font**: Caveat / Dancing Script (for handwritten flair)
+
+
+
+### Color Palette
+
+
+
+| Use              | Light Mode              | Dark Mode                    |
+
+|------------------|--------------------------|-------------------------------|
+
+| Background       | `#ffffff`, `#fdfbf7`     | `#111111`, `#0e0e0e`          |
+
+| Text             | `#1c1c1c`                | `#eaeaea`, `#f5f5f5`          |
+
+| Accents          | Sienna → Ochre → Teal    | Blue-violet gradient `#4a00e0 → #8e2de2` |
+
+| Buttons & Cards  | Glassmorphism, subtle shadows | Glassmorphism + neon glow  |
+
+
+
+### Effects
+
+- Glassmorphism (backdrop blur, semi-transparent cards)
+
+- 3D hover (rotate, lift, zoom)
+
+- Ink cursor trails
+
+- Magic hover glow (CSS transform + filter + box-shadow)
+
+- Scroll-based ink reveal for text
+
+
+
+---
+
+
+
+## 🖼️ Features
+
+
+
+- 🔁 **Theme Toggle** (Dark/Light) with persistent state
+
+- 🎨 **Gallery**: Filterable categories, 3D hover, lightbox view with metadata
+
+- 🧑‍🎨 **About Page**: Split layout with animated timeline and artist story
+
+- 📅 **Exhibitions**: Vertical timeline with glow-in cards
+
+- 🎬 **Project Highlights** (Optional): Video hover reveal + story timeline
+
+- 📬 **Contact Form**: Glass effect form with smart send (Email or WhatsApp)
+
+- 🖱️ **Cursor Interactions**: Brush trails, sparkles, glow effects
+
+- 📱 **Fully Responsive** on all screens
+
+- ⚡ **Performance**: Lazy load images, preload fonts, SEO meta tags
+
+
+
+---
+
+
+
+## 🚀 Getting Started
+
+
+
+### Install & Run Locally
+
+
+
+```bash
+
+
+
+# Install dependencies
+
+npm install
+
+
+
+# Start the development server
+
 npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/fa87d645-7dbe-4916-8cb1-cbd6b4dd0c9f) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
