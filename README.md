@@ -1,12 +1,12 @@
-AR Vishwa Art Studio – Interactive Artist Portfolio Website
+## AR Vishwa Art Studio – Interactive Artist Portfolio Website
 
 An immersive, responsive, and artistic portfolio website built using React, TypeScript, and Tailwind CSS, featuring advanced animations, scroll-triggered effects, 3D hover interactions, and modern design aesthetics inspired by fine art studios.
 
-🎯 Objective
+### 🎯 Objective
 
 To present a visual artist’s work in a bold, creative, and professional manner – combining modern frontend development with clean, elegant UI/UX principles and artistic emotion.
 
-⚙️ Tech Stack
+### ⚙️ Tech Stack
 
 Framework: React
 
@@ -24,20 +24,10 @@ Form Integration: EmailJS or WhatsApp API
 
 Performance: Lazy loading, SEO tags, image optimization
 
-📁 Folder Structure
-
-src/├── assets/ # Images, textures, logos├── components/ # Navbar, Footer, Cards, Modal, etc.├── pages/ # Homepage, About, Gallery, Contact, etc.├── data/ # Art metadata, exhibitions, quotes├── styles/ # Global styles or Tailwind extensions├── utils/ # Utility functions (theme switch, form handling)├── App.tsx├── main.tsx└── index.html
-
-
-
-
-
 ---
 
 
-
 ## 🎨 Visual Theme & UI Identity
-
 
 
 ### Modes
