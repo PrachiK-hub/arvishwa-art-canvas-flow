@@ -10,6 +10,7 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import ContactSection from '@/components/ContactSection';
 import SocialMediaSection from '@/components/SocialMediaSection';
 import FAQSection from '@/components/FAQSection';
+import AboutSection from '@/components/AboutSection';
 
 const Index = () => {
   useEffect(() => {
@@ -28,14 +29,14 @@ const Index = () => {
             <a href="#home" className="p-3 rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-colors duration-300">
               <span className="text-xl">🏠</span>
             </a>
+            <a href="#about" className="p-3 rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-colors duration-300">
+              <span className="text-xl">👤</span>
+            </a>
             <a href="#gallery" className="p-3 rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-colors duration-300">
               <span className="text-xl">🖼️</span>
             </a>
             <a href="#custom" className="p-3 rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-colors duration-300">
               <span className="text-xl">🎨</span>
-            </a>
-            <a href="#journey" className="p-3 rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-colors duration-300">
-              <span className="text-xl">✨</span>
             </a>
             <a href="#contact" className="p-3 rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-colors duration-300">
               <span className="text-xl">💬</span>
@@ -48,6 +49,10 @@ const Index = () => {
       <main>
         <section id="home">
           <HeroSection />
+        </section>
+
+        <section id="about">
+          <AboutSection />
         </section>
 
         <section id="gallery">

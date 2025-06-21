@@ -3,15 +3,11 @@ import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
 
 const ThemeSwitcher = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
   const themes = [
     { name: 'light', label: '☀️', color: 'bg-white' },
-    { name: 'dark', label: '🌙', color: 'bg-slate-800' },
-    { name: 'green', label: '🌿', color: 'bg-green-600' },
-    { name: 'red', label: '❤️', color: 'bg-red-600' },
-    { name: 'blue', label: '💙', color: 'bg-blue-600' },
-    { name: 'purple', label: '💜', color: 'bg-purple-600' }
+    { name: 'dark', label: '🌙', color: 'bg-slate-800' }
   ];
 
   return (
@@ -21,7 +17,7 @@ const ThemeSwitcher = () => {
           {themes.map((themeOption) => (
             <button
               key={themeOption.name}
-              onClick={() => setTheme(themeOption.name as any)}
+              onClick={toggleTheme}
               className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 ${
                 theme === themeOption.name ? 'ring-2 ring-offset-2 ring-blue-500' : ''
               } ${themeOption.color}`}
