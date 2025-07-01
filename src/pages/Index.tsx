@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import ThemeToggle from '@/components/ThemeToggle';
 import HeroSection from '@/components/HeroSection';
-import GallerySection from '@/components/GallerySection';
+import VirtualGallerySection from '@/components/VirtualGallerySection';
 import CustomOrderSection from '@/components/CustomOrderSection';
 import VisualJourneySection from '@/components/VisualJourneySection';
 import StudioPhotosSection from '@/components/StudioPhotosSection';
@@ -56,7 +56,7 @@ const Index = () => {
         </section>
 
         <section id="gallery">
-          <GallerySection />
+          <VirtualGallerySection />
         </section>
 
         <section id="custom">

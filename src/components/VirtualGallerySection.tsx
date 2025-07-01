@@ -1,182 +1,307 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Search, X, Upload, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+
+interface Artwork {
+  id: number;
+  title: string;
+  section: string;
+  image: string;
+  description: string;
+  price: number;
+  medium: string;
+  size: string;
+}
+
+const artworks: Artwork[] = [
+  {
+    id: 1,
+    title: "Mahadev Meditation",
+    section: "Spiritual",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop",
+    description: "A powerful depiction of Lord Shiva in deep meditation",
+    price: 15000,
+    medium: "Oil on Canvas",
+    size: "24x36 inches"
+  },
+  {
+    id: 2,
+    title: "Buddha's Serenity",
+    section: "Buddha",
+    image: "https://images.unsplash.com/photo-1544967882-1f6ab219ac64?w=400&h=500&fit=crop",
+    description: "Peaceful Buddha in lotus position",
+    price: 12000,
+    medium: "Acrylic",
+    size: "20x30 inches"
+  },
+  {
+    id: 3,
+    title: "Mountain Landscape",
+    section: "Landscape",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=500&fit=crop",
+    description: "Serene mountain vista at dawn",
+    price: 8000,
+    medium: "Watercolor",
+    size: "18x24 inches"
+  },
+  {
+    id: 4,
+    title: "Portrait Study",
+    section: "Portrait",
+    image: "https://images.unsplash.com/photo-1544967882-1f6ab219ac64?w=400&h=500&fit=crop",
+    description: "Realistic portrait with emotional depth",
+    price: 10000,
+    medium: "Oil",
+    size: "16x20 inches"
+  },
+  {
+    id: 5,
+    title: "Abstract Flow",
+    section: "Acrylic",
+    image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=400&h=500&fit=crop",
+    description: "Dynamic acrylic abstract composition",
+    price: 6000,
+    medium: "Acrylic",
+    size: "20x24 inches"
+  },
+  {
+    id: 6,
+    title: "Pencil Sketch",
+    section: "Pencil",
+    image: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=500&fit=crop",
+    description: "Detailed pencil drawing with fine shading",
+    price: 3000,
+    medium: "Graphite",
+    size: "12x16 inches"
+  },
+  {
+    id: 7,
+    title: "Textured Waves",
+    section: "Texture",
+    image: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=400&h=500&fit=crop",
+    description: "Mixed media with rich textures",
+    price: 9000,
+    medium: "Mixed Media",
+    size: "22x28 inches"
+  },
+  {
+    id: 8,
+    title: "Monochrome Study",
+    section: "Black and White",
+    image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=400&h=500&fit=crop",
+    description: "Study in contrast and form",
+    price: 7000,
+    medium: "Charcoal",
+    size: "18x24 inches"
+  }
+];
 
 const VirtualGallerySection = () => {
-  const [selectedRoom, setSelectedRoom] = useState('main');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedArtwork, setSelectedArtwork] = useState<Artwork | null>(null);
+  const [filteredArtworks, setFilteredArtworks] = useState(artworks);
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const galleryRooms = [
-    {
-      id: 'main',
-      name: 'Main Gallery',
-      description: 'Our featured collection of spiritual and abstract works',
-      image: 'https://images.unsplash.com/photo-1544967882-6abec256ace3?w=800&h=600&fit=crop',
-      paintingCount: 12
-    },
-    {
-      id: 'contemporary',
-      name: 'Contemporary Room',
-      description: 'Modern interpretations of timeless emotions',
-      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&h=600&fit=crop',
-      paintingCount: 8
-    },
-    {
-      id: 'intimate',
-      name: 'Intimate Collection',
-      description: 'Personal pieces for smaller spaces',
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop',
-      paintingCount: 15
+  useEffect(() => {
+    const filtered = artworks.filter(artwork =>
+      artwork.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      artwork.section.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      artwork.description.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredArtworks(filtered);
+  }, [searchQuery]);
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const files = Array.from(e.target.files);
+      setUploadedFiles([...uploadedFiles, ...files]);
     }
-  ];
+  };
 
-  const paintings = [
-    {
-      id: 1,
-      title: "Soul's Awakening",
-      image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?w=400&h=500&fit=crop",
-      room: 'main'
-    },
-    {
-      id: 2,
-      title: "Emotional Depths",
-      image: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=400&h=500&fit=crop",
-      room: 'main'
-    },
-    {
-      id: 3,
-      title: "Modern Harmony",
-      image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&h=500&fit=crop",
-      room: 'contemporary'
-    },
-    {
-      id: 4,
-      title: "Gentle Whispers",
-      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=400&h=500&fit=crop",
-      room: 'intimate'
-    }
-  ];
+  const removeFile = (index: number) => {
+    setUploadedFiles(uploadedFiles.filter((_, i) => i !== index));
+  };
 
-  const currentRoomPaintings = paintings.filter(p => p.room === selectedRoom);
+  const openModal = (artwork: Artwork) => {
+    setSelectedArtwork(artwork);
+    setIsModalOpen(true);
+  };
 
   return (
-    <section className="py-20 bg-slate-900 text-white">
-      <div className="container mx-auto px-4">
-        {/* Section Header */}
+    <section className="py-20 relative overflow-hidden">
+      {/* Grid Background */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="h-full w-full grid-background"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-serif font-bold mb-6">
-            Virtual <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Gallery Tour</span>
+          <h2 className="text-4xl md:text-6xl font-bold font-serif mb-6">
+            <span className="magic-ink-text">Virtual Gallery</span>
           </h2>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-            Step into our digital gallery and explore paintings in an immersive 3D environment. 
-            Each room tells a different story, each painting waits to be discovered.
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Explore my artistic journey through an immersive 3D carousel experience
           </p>
         </div>
 
-        {/* Room Selection */}
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          {galleryRooms.map((room) => (
-            <Card 
-              key={room.id}
-              className={`cursor-pointer transition-all duration-300 overflow-hidden ${
-                selectedRoom === room.id 
-                  ? 'ring-4 ring-blue-500 bg-slate-800' 
-                  : 'bg-slate-800 hover:bg-slate-700'
-              }`}
-              onClick={() => setSelectedRoom(room.id)}
-            >
-              <div className="relative">
-                <img 
-                  src={room.image} 
-                  alt={room.name}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm">
-                  {room.paintingCount} pieces
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-white mb-2">{room.name}</h3>
-                <p className="text-slate-300 text-sm">{room.description}</p>
-              </div>
-            </Card>
-          ))}
+        {/* Search Bar */}
+        <div className="glass-search-container max-w-md mx-auto mb-16">
+          <div className="relative">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
+            <Input
+              type="text"
+              placeholder="Search for Mahadev painting, Buddha, Portrait..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="glass-input pl-12 pr-4 py-3 text-lg"
+            />
+          </div>
         </div>
 
-        {/* 3D Gallery Simulation */}
-        <div className="bg-slate-800 rounded-2xl p-8 mb-12">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-white mb-2">
-              Now Viewing: {galleryRooms.find(r => r.id === selectedRoom)?.name}
-            </h3>
-            <p className="text-slate-300">Use your mouse to explore • Click paintings for details</p>
-          </div>
-
-          {/* Simulated 3D Gallery View */}
-          <div className="relative h-96 bg-gradient-to-b from-slate-700 to-slate-900 rounded-xl overflow-hidden">
-            {/* Floor perspective */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-600/50 to-transparent transform perspective-1000 rotate-x-75"></div>
-            
-            {/* Gallery walls with paintings */}
-            <div className="flex justify-center items-center h-full space-x-8 px-8">
-              {currentRoomPaintings.map((painting, index) => (
-                <div 
-                  key={painting.id}
-                  className="group relative transform transition-all duration-500 hover:scale-110 hover:z-10"
-                  style={{ 
-                    transform: `perspective(1000px) rotateY(${index % 2 === 0 ? '-5' : '5'}deg)`,
-                    animationDelay: `${index * 200}ms`
+        {/* 3D Carousel */}
+        <div className="carousel-container relative h-[600px] mb-20">
+          <div className="carousel-wrapper">
+            <div className="carousel-3d">
+              {filteredArtworks.map((artwork, index) => (
+                <div
+                  key={artwork.id}
+                  className="carousel-item glass-card"
+                  style={{
+                    transform: `rotateY(${index * (360 / filteredArtworks.length)}deg) translateZ(400px)`,
+                    animationDelay: `${index * 0.1}s`
                   }}
+                  onClick={() => openModal(artwork)}
                 >
-                  <div className="bg-amber-100 p-4 rounded-lg shadow-2xl">
-                    <img 
-                      src={painting.image}
-                      alt={painting.title}
-                      className="w-32 h-40 object-cover rounded shadow-lg cursor-pointer"
+                  <div className="artwork-card">
+                    <img
+                      src={artwork.image}
+                      alt={artwork.title}
+                      className="artwork-image"
                     />
-                    <div className="mt-2 text-center">
-                      <p className="text-xs text-slate-800 font-medium">{painting.title}</p>
+                    <div className="artwork-overlay">
+                      <Eye className="w-8 h-8 text-white" />
                     </div>
-                  </div>
-                  
-                  {/* Hover details */}
-                  <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-black/90 text-white px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                    <p className="text-sm font-medium">{painting.title}</p>
-                    <p className="text-xs text-slate-300">Click to view details</p>
+                    <div className="artwork-info">
+                      <h3 className="font-bold text-sm">{artwork.title}</h3>
+                      <p className="text-xs text-muted-foreground">{artwork.section}</p>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
-
-            {/* Gallery lighting effects */}
-            <div className="absolute top-8 left-1/4 w-32 h-32 bg-yellow-400/20 rounded-full blur-3xl"></div>
-            <div className="absolute top-8 right-1/4 w-32 h-32 bg-yellow-400/20 rounded-full blur-3xl"></div>
-          </div>
-
-          {/* Gallery Controls */}
-          <div className="flex justify-center space-x-4 mt-8">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-              🎮 Enter Full 3D Mode
-            </Button>
-            <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
-              📱 Mobile VR View
-            </Button>
-            <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-700">
-              🔊 Audio Guide
-            </Button>
           </div>
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center">
-          <p className="text-slate-300 mb-6">
-            Experience the full gallery with VR support and audio commentary
+        {/* Custom Art Orders Section */}
+        <div className="glass-panel max-w-4xl mx-auto p-8">
+          <h3 className="text-3xl font-bold font-handwritten text-center mb-8">
+            Custom Art Orders
+          </h3>
+          <p className="text-center text-muted-foreground mb-8">
+            Upload your reference images and let's create something magical together
           </p>
-          <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-full">
-            Launch Full Virtual Tour
-          </Button>
+
+          <div className="upload-area glass-card p-8 text-center mb-6">
+            <input
+              type="file"
+              id="file-upload"
+              multiple
+              accept="image/*,.pdf"
+              onChange={handleFileUpload}
+              className="hidden"
+            />
+            <label htmlFor="file-upload" className="cursor-pointer">
+              <Upload className="w-16 h-16 mx-auto mb-4 text-muted-foreground" />
+              <p className="text-lg font-medium mb-2">Drop your files here or click to browse</p>
+              <p className="text-sm text-muted-foreground">Supports JPG, PNG, PDF files</p>
+            </label>
+          </div>
+
+          {uploadedFiles.length > 0 && (
+            <div className="uploaded-files grid grid-cols-2 md:grid-cols-4 gap-4">
+              {uploadedFiles.map((file, index) => (
+                <div key={index} className="glass-card p-4 relative">
+                  <div className="text-center">
+                    <p className="text-sm font-medium truncate">{file.name}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {(file.size / 1024 / 1024).toFixed(2)} MB
+                    </p>
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="absolute -top-2 -right-2 w-6 h-6 rounded-full p-0"
+                    onClick={() => removeFile(index)}
+                  >
+                    <X className="w-4 h-4" />
+                  </Button>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className="text-center mt-8">
+            <Button className="glass-button font-handwritten text-lg px-8 py-3">
+              Submit Custom Order
+            </Button>
+          </div>
         </div>
       </div>
+
+      {/* Artwork Modal */}
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="glass-modal max-w-2xl">
+          {selectedArtwork && (
+            <>
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-serif">
+                  {selectedArtwork.title}
+                </DialogTitle>
+              </DialogHeader>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="artwork-modal-image">
+                  <img
+                    src={selectedArtwork.image}
+                    alt={selectedArtwork.title}
+                    className="w-full h-64 md:h-80 object-cover rounded-lg"
+                  />
+                </div>
+                <div className="artwork-details space-y-4">
+                  <div>
+                    <h4 className="font-semibold text-muted-foreground">Description</h4>
+                    <p>{selectedArtwork.description}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-muted-foreground">Medium</h4>
+                    <p>{selectedArtwork.medium}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-muted-foreground">Size</h4>
+                    <p>{selectedArtwork.size}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-muted-foreground">Category</h4>
+                    <p>{selectedArtwork.section}</p>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-muted-foreground">Price</h4>
+                    <p className="text-2xl font-bold text-primary">₹{selectedArtwork.price.toLocaleString()}</p>
+                  </div>
+                  <div className="flex gap-3 pt-4">
+                    <Button className="flex-1">Add to Cart</Button>
+                    <Button variant="outline" className="flex-1">Contact Artist</Button>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
